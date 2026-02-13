@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Valentine’s Letter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+<style>
+  /* Body & background */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+      ellipse 60% 80% at center,
+      #f8e0e0 0%,
+      #f7d0d0 50%,
+      #f5c0c0 100%
+    );
+    font-family: "Cedarville Cursive", cursive;
+    position: relative;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    animation: floatUp linear infinite;
+    z-index: 1;
+  }
+
+  .heart img { display: block; }
+
+  @keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+  }
+
+  /* Letter */
+  .letter {
+    position: relative;
+    background-color: white;
+    padding: 60px 40px 40px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 600px;
+    z-index: 50; /* ensure above hearts */
+    text-align: center;
+  }
+
+  /* Decorative tape - left corner with peel slanted \ */
+  .tape {
+    position: absolute;
+    top: -20px;
+    left: -50px;
+    width: 160px;
+    transform: rotate(-25deg);  /* slant like \ */
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    z-index: 60;
+  }
+
+  .tape::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20px;             
+    width: 20px;
+    height: 40px;
+    background: rgba(255, 192, 203, 0.9); /* lighter pink for curl */
+    transform: rotate(-25deg) skewY(-10deg); /* match tape slant */
+    border-radius: 4px 0 0 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  }
+
+  /* Corner heart sticker - straight */
+  .sticker-heart {
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    width: 140px;
+    transform: rotate(0deg);  /* keep heart straight */
+    pointer-events: none;
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
+    z-index: 61;
+  }
+
+  /* Letter text */
+  .letter h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #E8749B;
+  }
+
+  .letter p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  /* Buttons */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .buttons button {
+    background-color: #E8749B;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 14px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background-color .25s ease, transform .15s ease;
+    z-index: 51; /* above floating hearts */
+    position: relative;
+  }
+
+  .buttons button:hover { background-color: #d45c83; }
+  .buttons button:active { transform: scale(0.97); }
+
+</style>
+</head>
+<body>
+
+  <div class="letter">
+    <!-- left slanted tape with peel -->
+    <img src="pinktapeheart.png" class="tape" alt="tape">
+
+    <h2>My Hubby,</h2>
+    <p>
+      message message message message message messagev messagevvv message message messagevvvv
+       message message message message message message message message message
+    </p>
+    <p>
+      Happy Valentine’s Day, my love! ❤️
+    </p>
+
+    <div class="buttons">
+      <button onclick="closeLetter()">Close the Letter</button>
+      <button onclick="getKisses()">Get Your Kisses</button>
+    </div>
+
+    <!-- corner sticker - straight -->
+    <img src="pinkheart.png" class="sticker-heart" alt="heart sticker">
+  </div>
+
+  <!-- Big floating hearts -->
+  <div class="heart" style="left:10%; animation-duration:5s;">
+    <img src="red-heart.png" alt="heart" style="width:120px; height:120px;">
+  </div>
+  <div class="heart" style="left:30%; animation-duration:6s;">
+    <img src="red-heart.png" alt="heart" style="width:130px; height:130px;">
+  </div>
+  <div class="heart" style="left:50%; animation-duration:4s;">
+    <img src="red-heart.png" alt="heart" style="width:140px; height:140px;">
+  </div>
+  <div class="heart" style="left:70%; animation-duration:7s;">
+    <img src="red-heart.png" alt="heart" style="width:125px; height:125px;">
+  </div>
+  <div class="heart" style="left:90%; animation-duration:5.5s;">
+    <img src="red-heart.png" alt="heart" style="width:135px; height:135px;">
+  </div>
+
+<script>
+  function closeLetter() { window.location.href = "index.html"; }
+  function getKisses() { window.location.href = "kisses.html"; }
+</script>
+
+</body>
+</html>

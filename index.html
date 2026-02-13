@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine's Letter</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+      ellipse 60% 80% at center,
+      #e9bcbc 0%,
+      #eecaca 30%,
+      #f4dede 55%,
+      #f8eeee 75%,
+      #f3f0f0 100%
+    );
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  /* Title styling */
+  h1 {
+    font-family: "Cedarville Cursive", cursive;
+    font-size: 2.8rem;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  /* Envelope image */
+  .envelope {
+    width: 250px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+  }
+
+  /* Button styling */
+  .open-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: #ffb6c1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .open-button:hover {
+    background-color: #ff85c1;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Title -->
+  <h1>My Valentine’s Letter for You</h1>
+
+  <!-- Envelope image -->
+  <img src="envelope.png" alt="Envelope" class="envelope">
+
+  <!-- Button -->
+  <button class="open-button" onclick="window.location.href='letter.html'">
+    Click here to open
+  </button>
+
+</body>
+</html>

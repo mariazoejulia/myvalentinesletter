@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Virtual Kisses</title>
+
+<!-- Import Playwrite NZ Basic from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic&display=swap" rel="stylesheet">
+
+<style>
+/* PAGE BASE */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "Playwrite NZ Basic", cursive;
+  background: #f4e3e3;
+
+  /* Flex for vertical centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Column layout with consistent spacing */
+  flex-direction: column;
+  gap: 25px; /* unified spacing */
+  position: relative;
+}
+
+/* CENTER HEART IMAGE ABOVE TEXT */
+.center-heart {
+  width: 150px;
+  height: auto;
+  animation: floatHeart 3s ease-in-out infinite, heartGlow 3s ease-in-out infinite alternate;
+}
+
+/* FLOATING HEART ANIMATION */
+@keyframes floatHeart {
+  0%   { transform: translateY(0) scale(1); }
+  25%  { transform: translateY(-5px) scale(1.03); }
+  50%  { transform: translateY(-10px) scale(1.05); }
+  75%  { transform: translateY(-5px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* HEART GLOW */
+@keyframes heartGlow {
+  0%   { opacity: 0.85; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+/* SOFT HEART GLOW */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 50% 60%, rgba(255,120,160,0.55) 0%, rgba(255,120,160,0.35) 18%, rgba(255,120,160,0.15) 32%, transparent 45%),
+    radial-gradient(circle at 42% 45%, rgba(255,110,150,0.45) 0%, rgba(255,110,150,0.2) 20%, transparent 40%),
+    radial-gradient(circle at 58% 45%, rgba(255,110,150,0.45) 0%, rgba(255,110,150,0.2) 20%, transparent 40%);
+
+  filter: blur(45px);
+  opacity: 0.9;
+  z-index: 0;
+  animation: heartGlow 6s ease-in-out infinite alternate;
+}
+
+/* SOFT PAPER LIGHT */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  mix-blend-mode: soft-light;
+  z-index: 0;
+}
+
+/* TEXT */
+p {
+  font-size: 1.5rem;
+  color: #333;
+  z-index: 10;
+  position: relative;
+  font-family: "Playwrite NZ Basic", cursive;
+  margin: 0; /* spacing handled by gap */
+}
+
+/* BUTTON */
+button {
+  background-color: #E8749B;
+  border: none;
+  color: white;
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 10;
+  position: relative;
+  font-family: "Playwrite NZ Basic", cursive;
+}
+
+button:hover {
+  background-color: #d45c83;
+}
+
+button:active {
+  transform: scale(1);
+}
+
+/* BACK LINK - SMALL */
+.back-link {
+  font-family: "Playwrite NZ Basic", cursive;
+  color: #E8749B;
+  text-decoration: none;
+  font-size: 1rem;  /* smaller font */
+  z-index: 10;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+.back-link:hover {
+  color: #d45c83;
+  text-decoration: underline;
+}
+
+/* FLOATING KISSES */
+.kiss {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  z-index: 5;
+  font-family: "Playwrite NZ Basic", cursive;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Heart image above text -->
+<img src="red-heart.png" alt="Red Heart" class="center-heart">
+
+<p>I hope you liked my simple Valentine’s letter, I love you so much. &lt;3</p>
+
+<button onclick="spawnKisses()">Click for Virtual Kisses</button>
+<a href="index.html" class="back-link">← Back</a>
+
+<script>
+function spawnKisses() {
+  for (let i = 0; i < 30; i++) {
+    const kiss = document.createElement('div');
+    kiss.classList.add('kiss');
+    kiss.textContent = "💋";
+
+    kiss.style.left = Math.random() * 95 + "vw";
+    kiss.style.top = Math.random() * 100 + "vh";
+    kiss.style.animationDuration = (2 + Math.random() * 4) + "s";
+    kiss.style.fontSize = (20 + Math.random() * 30) + "px";
+
+    document.body.appendChild(kiss);
+
+    kiss.addEventListener('animationend', () => {
+      kiss.remove();
+    });
+  }
+}
+</script>
+
+</body>
+</html>
